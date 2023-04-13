@@ -16,13 +16,13 @@ export default function App() {
       id:1,
       selected:true,
       name: 'Alarm 1',
-      file: 'Alarm1.mp3'
+      file: require('./assets/toque1.mp3')
     },
     {
       id:2,
       selected:false,
       name: 'Alarm 2',
-      file: 'Alarm2.mp3',
+      file: require('./assets/toque1.mp3')
     }
   ]);
 
@@ -110,7 +110,7 @@ export default function App() {
       );}
       else if (state == 'start'){
         return(
-          <Contador setState={setState} minutes={minutes} seconds={seconds}></Contador>
+          <Contador alarms={alarmSound} setMinutes={setMinutes} setSeconds={setSeconds} setState={setState} minutes={minutes} seconds={seconds}></Contador>
           )
       }
             
