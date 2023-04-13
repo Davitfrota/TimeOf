@@ -3,11 +3,12 @@ import React,{ useState} from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Alert } from 'react-native';
 import {Picker} from '@react-native-picker/picker'
 import { LinearGradient } from 'expo-linear-gradient';
+import Contador from './Contador';
 
 export default function App() {
   const [state,setState] = useState('select');
   const [seconds,setSeconds] = useState(0);
-  const [minutes,setMinutes] = useState(0);
+  const [minutes,setMinutes] = useState(1);
 
   const [alarmSound,setAlarmSound] = useState([
     
@@ -60,7 +61,7 @@ export default function App() {
           <View style={{flexDirection:'row'}}>
             <Text style={{color:'white', paddingTop: 16}}>Min:</Text>
             <Picker
-              style={{ height: 50, width: 100, color: 'white' }}
+              style={{ height: 50, width: 80, color: 'black', backgroundColor: 'transparent', borderWidth: '0' }}
               selectedValue={minutes}
               onValueChange={(itemValue, itemIndex) => setMinutes(itemValue)}
             >
@@ -74,7 +75,7 @@ export default function App() {
             </Picker>
             <Text style={{color:'white', paddingTop: 16}}>Sec:</Text>
             <Picker
-              style={{ height: 50, width: 100,color: 'white'}}
+              style={{ height: 50, width: 80,color: 'black', backgroundColor: 'transparent', borderWidth: '0' }}
               selectedValue={seconds}
               onValueChange={(itemValue, itemIndex) => setSeconds(itemValue)}
             >
@@ -109,9 +110,7 @@ export default function App() {
       );}
       else if (state == 'start'){
         return(
-          <View>
-            <Text>Started</Text>
-          </View>
+          <Contador setState={setState} minutes={minutes} seconds={seconds}></Contador>
           )
       }
             
